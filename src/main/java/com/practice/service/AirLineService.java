@@ -27,4 +27,9 @@ public class AirLineService {
 		
 	}
 
+	public void update_Details_flight(AirLines airLines) {
+		airLineRepository.save(airLines);
+		
+	}
+
 }
