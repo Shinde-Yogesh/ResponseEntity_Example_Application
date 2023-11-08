@@ -17,20 +17,19 @@ public class AirLineService {
 	public void registerFlight(AirLines flight) {
 
 		airLineRepository.save(flight);
-
 	}
 
 	public List<AirLines> allFlights() {
 
 		List<AirLines> findAll = airLineRepository.findAll();
 		return findAll;
-
 	}
 
 	public void update_Details_flight(AirLines airLines) {
 		airLineRepository.save(airLines);
 	}
 
-	
-
+	public void cancled_Flight(String flightName) {
+		airLineRepository.deleteById(flightName);
+	}
 }
