@@ -3,6 +3,7 @@ package com.practice.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +20,12 @@ public class AirwaysController {
 
 	@Autowired
 	private AirLineService airLineService;
-
+	
+	
 	// General method for checking the configuration 
-	@GetMapping("/sayMyName/{String Name}")
-	public String sayMyName(@PathVariable String Name) {
-		return "Say My Name : " +Name;
+	@GetMapping("/sayMyName/{name}")
+	public String sayMyName(@PathVariable String name) {
+		return "Say My Name : " +name;
 	}
 
 	//for register the new flight
@@ -44,7 +46,7 @@ public class AirwaysController {
 	
 	//Day's flight
 	@GetMapping("/allFlights")
-	public List<AirLines>  allFlights()
+	public ResponseEntity<List<AirLines>>  allFlights()
 	{
 		return airLineService.allFlights();
 		
