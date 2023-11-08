@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +19,13 @@ public class AirwaysController {
 	@Autowired
 	private AirLineService airLineService;
 
-	@GetMapping("/drugLord")
-	public String sayMyName() {
-		return "Pablo Emilo Escobar Gravetio";
+	// General method for checking the configuration 
+	@GetMapping("/sayMyName/{String Name}")
+	public String sayMyName(@PathVariable String Name) {
+		return "Say My Name : " +Name;
 	}
 
+	//for register the new flight
 	@PostMapping("/registerFlight")
 	public String registerFlight(@RequestBody AirLines flight) {
 
@@ -30,7 +33,7 @@ public class AirwaysController {
 		return "Registered...!";
 	}
 	
-	
+	//checking the credentials 
 	@PutMapping("/updateDetails")
 	public void update_Details_flight(@RequestBody AirLines airLines)
 	{
@@ -38,12 +41,14 @@ public class AirwaysController {
 	}
 	
 	
-	
+	//Day's flight
 	@GetMapping("/allFlights")
 	public List<AirLines>  allFlights()
 	{
 		return airLineService.allFlights();
 		
 	}
+	
+	
 
 }
